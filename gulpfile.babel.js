@@ -1,14 +1,38 @@
 import gulp from 'gulp';
-import del from 'del';
-import sass from 'gulp-sass';
-import clean from 'gulp-clean-css';
-import autoprefixer from 'gulp-autoprefixer';
-import concat from 'gulp-concat';
-import uglify from 'gulp-uglify';
 import babel from 'gulp-babel';
+import sass from 'gulp-sass';
+import uglify from 'gulp-uglify';
+import concat from 'gulp-concat';
+import autoprefixer from 'gulp-autoprefixer';
+import clean from 'gulp-clean-css';
+import browserSync from 'browser-sync';
+import del from 'del';
+import sourcemaps from 'gulp-sourcemaps';
+
+const sync = browserSync.create();
+const reload = sync.reload;
+const config = {
+    paths: {
+        src: {
+            html: './src/**/*.html',
+            img: './src/img/**.*',
+            sass: ['src/sass/app.scss'],
+            js: [
+                'src/js/app.js',
+            ]
+        },
+        dist: {
+            main: './dist',
+            css: './dist/css',
+            js: './dist/js',
+            img: './dist/img'
+        }
+    }
+};
 
 gulp.task('sass', () => {
-    gulp.src('./src/styles/style.scss')
+    return gulp.src(config.paths.src.sass)
+        .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer({
             "overrideBrowserslist": [
@@ -19,45 +43,53 @@ gulp.task('sass', () => {
             ]
         }))
         .pipe(clean())
-        .pipe(gulp.dest('./dist/css'));
-    //sass > css (gulp-sass)
-    //minification (gulp-clean-css)
-    //autoprefix (gulp-autoprefixer)
+        .pipe(sourcemaps.write('./src/sass/app.scss'))
+        .pipe(gulp.dest(config.paths.dist.css))
+        .pipe(sync.stream());
 });
 
 gulp.task('js', () => {
-    gulp.src([
-        './src/js/other.js',
-        './src/js/app.js'
-    ])
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+    gulp.src(config.paths.src.js)
+        .pipe(sourcemaps.init())
+        .pipe(babel({ presets: ['env'] }))
         .pipe(concat('app.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./dist/js/'));
-    // concatenate gulp-concat
-    // babel.js gulp-babel
-    // minification gulp-uglify
+        .pipe(sourcemaps.write('./src/js/app.js'))
+        .pipe(gulp.dest(config.paths.dist.js));
+
+    reload();
 });
 
 gulp.task('static', () => {
-    gulp.src('./src/**/*.html').pipe(gulp.dest('./dist'));
-    gulp.src('./src/img/**/*.*').pipe(gulp.dest('./dist/img/'));
+    gulp.src(config.paths.src.html)
+        .pipe(gulp.dest(config.paths.dist.main));
+
+    gulp.src(config.paths.src.img)
+        .pipe(gulp.dest(config.paths.dist.img));
+
+    reload();
 });
 
 gulp.task('clean', () => {
-    return del('./dist')
+    return del([config.paths.dist.main]);
 });
 
-gulp.task('watch', ['default'], () => {
-    gulp.watch('src/sass/**/*.scss', ['sass']);
+gulp.task('build', ['clean'], function () {
+    gulp.start('sass', 'js', 'static');
+});
+
+gulp.task('server', () => {
+    sync.init({
+        injectChanges: true,
+        server: config.paths.dist.main
+    });
+});
+
+gulp.task('watch', ['default'], function () {
+    gulp.watch('src/sass/app.scss', ['sass']);
     gulp.watch('src/js/**/*.js', ['js']);
-    gulp.watch('src/**/*.html', ['static']);
-});
-
-gulp.task('build', ['clean'], () => {
-    gulp.start(['static', 'sass', 'js'])
+    gulp.watch('src/*.html', ['static']);
+    gulp.start('server');
 });
 
 gulp.task('default', ['build']);
