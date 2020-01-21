@@ -1,4 +1,7 @@
-body {
-    background: lightblue;
-    font-size: 15px;
+@import './variables/_variables.scss';
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
