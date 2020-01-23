@@ -1,7 +1,13 @@
-@import './variables/_variables.scss';
+@import './variables/variables';
+@import './utils/utils';
+@import './header/header.scss';
 
 *, *::after, *::before {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.navigation {
+    // nothingdddd
 }

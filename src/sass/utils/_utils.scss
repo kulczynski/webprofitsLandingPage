@@ -1,0 +1,26 @@
+
+
+
+@mixin flex-mixin($justify,$align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: wrap;
+    flex-direction: $direction;
+}
+
+.container {
+    max-width: 80%;
+    min-width: calc((230/16)*1rem);
+
+}
+
+
+    .flex-center-col {
+    @include flex-mixin(center, center, row );
+    }
+
+    .flex-center-row {
+        @include flex-mixin(space-between, center, row );
+    }
+
