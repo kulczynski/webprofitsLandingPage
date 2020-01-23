@@ -1,8 +1,76 @@
+@import '../variables/variables';
 
-.navigation {
-    background: red;
-    border: 3px solid yellow;
-    font-size: 1rem;
+
+.header {
+    background: map-get($colors, "darker" );
+    color: map-get($colors, "primary" );
+    .nav {
+        .navigation {
+            flex-direction: column;
+            list-style: none;
+            .logo{
+                font-family: 'Bangers', cursive;
+                font-size: 3rem;
+                margin: 1rem 0 0 0;
+            }
+            .contact{
+                display: none;
+            }
+        }
+    }
+
+    .hero{
+        .hero-title{
+            font-size: 2.85rem;
+            font-weight: 400;
+            line-height: 3rem;
+            text-align: center;
+
+            margin: 2rem 0;
+
+        }
+        .hero-subtitle{
+            font-size: 1.2rem;
+            line-height: 1.7rem;
+            font-weight: 300;
+            margin: 0 .5rem 2rem .5rem;
+        }
+        .newsletterForm{
+            width: 100%;
+
+            .email, .button {
+                width: 100%;
+                height: 3rem;
+                font-size: 1rem;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .email{
+
+                &::placeholder{
+                    color: map-get($colors, "darker" )
+                }
+            }
+
+            .button {
+                background: map-get($colors, "pink" );
+                border: none;
+                color: map-get($colors, "primary" );
+                font-weight: 900;
+                letter-spacing: .25rem;
+                text-transform: uppercase;
+
+            }
+        }
+        .hero-tips{
+            color: map-get($colors, "grey" );
+            font-size: 1.1rem;
+            text-align: center;
+            line-height: 2rem;
+            margin-bottom: 8rem;
+        }
+    }
 }
 
 

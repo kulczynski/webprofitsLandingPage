@@ -10,14 +10,14 @@
 }
 
 .container {
-    max-width: 80%;
-    min-width: calc((230/16)*1rem);
+    max-width: 90%;
+    min-width: 230px;
 
 }
 
 
     .flex-center-col {
-    @include flex-mixin(center, center, row );
+    @include flex-mixin(center, center, column );
     }
 
     .flex-center-row {
