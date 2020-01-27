@@ -1,4 +1,110 @@
-body {
-    background: lightblue;
-    font-size: 15px;
+@import './variables/variables';
+@import './topography/topography';
+@import './utils/utils';
+@import './header/header.scss';
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.title{
+    &-pink{
+    color: map-get($colors, 'pink' );
+    }
+
+    &-black {
+        font-size: 2.1rem;
+        font-weight: 400;
+        color: map-get($colors, 'darker' )
+    }
+}
+
+h6.description {
+    text-align: center;
+}
+
+p.tip {
+    color: map-get($colors, 'grey' );
+    font-size: .8rem;
+    text-align: center;
+}
+.list-element {
+    padding-left: 1em;
+    text-indent: -.7em;
+    line-height: 1.5rem;
+    margin: 1rem 0;
+}
+
+.list-element::before {
+    content: "• ";
+    color: red;
+    font-size: 1.5rem;
+  }
+
+.card > img{
+    width: 20%;
+}
+
+.logos > img{
+    margin: 1rem;
+}
+
+.dark-bg {
+    // width:100vw;
+    background: map-get($colors, "darker" );
+    color: map-get($colors, "primary" );
+
+    & > div {
+        margin: 2rem 0;
+    }
+
+        .title{
+            margin: .5rem 0;
+
+        }
+        .subtitle{
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 0 .5rem 2rem .5rem;
+        }
+        .button {
+            display: table;
+            margin: 0 auto;
+            width: 12rem;
+            padding: 0 auto;
+            line-height: 3.5rem;
+            background: map-get($colors, "pink" );
+            border: none;
+            border-radius: 30px;
+            color: map-get($colors, "primary" );
+            font-weight: 900;
+            letter-spacing: .25rem;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all ease .3s;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+}
+
+.footer {
+    padding: 1rem 0 0 0;
+
+    &-description {
+        min-width: 200px;
+    }
+
+    .rights, .licences {
+        width: 100%;
+        background: map-get($colors , 'secondary' );
+    }
+
+    .licences > p {
+        font-size: .2rem;
+        margin: 0;
+        padding: .1rem;
+        line-height: 0;
+    }
 }

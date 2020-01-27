@@ -1,0 +1,33 @@
+
+
+
+@mixin flex-mixin($justify,$align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: wrap;
+    flex-direction: $direction;
+}
+
+@mixin topography-set($f-size, $f-weight, $l-height, $t-align){
+    font-size: $f-size;
+    font-weight:  $f-weight;
+    line-height: $l-height;
+    text-align: $t-align;
+}
+
+.container {
+    max-width: 90%;
+    min-width: 230px;
+
+}
+
+
+.flex-center-col {
+    @include flex-mixin(center, center, column );
+}
+
+.flex-center-row {
+    @include flex-mixin(center, center, row );
+}
+
