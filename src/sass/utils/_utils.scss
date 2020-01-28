@@ -16,8 +16,20 @@
     text-align: $t-align;
 }
 
+@mixin media-min($width){
+    @media (min-width: $width) {@content;}
+}
+
+@mixin media-max($width){
+    @media (max-width: $width)  {@content;}
+}
+
+@mixin media-between($widthOne, $widthTwo){
+    @media (min-width: $width) and (max-width: $widthTwo) {@content;}
+}
+
 .container {
-    max-width: 90%;
+    max-width: 95%;
     min-width: 230px;
 
 }

@@ -1,13 +1,20 @@
 @import '../variables/variables';
+@import '../utils/utils';
 
 
 .header {
     background: map-get($colors, "darker" );
     color: map-get($colors, "primary" );
     .nav {
+        width:100%;
         .navigation {
             flex-direction: column;
             list-style: none;
+
+            @include media-min(map-get($breakpoints, "phone")){
+                @include flex-mixin(space-between, center, row );
+
+            }
             .logo{
                 font-family: 'Bangers', cursive;
                 font-size: 3rem;
@@ -15,6 +22,16 @@
             }
             .contact{
                 display: none;
+                margin: 1rem 0 0 0;
+
+                @include media-min(map-get($breakpoints, "phone")){
+                    display: flex;
+                    align-self: center;
+                    font-family: 'Lato', sans-serif;
+                    font-size: 1.75rem;
+                    font-weight: 400;
+                    color: map-get($colors, "red" )
+                }
             }
         }
     }

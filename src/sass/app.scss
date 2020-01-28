@@ -9,7 +9,13 @@
     padding: 0;
 }
 
+main{
+    width: 100%;
+}
+
 .title{
+    margin: .5rem 0;
+
     &-pink{
     color: map-get($colors, 'pink' );
     }
@@ -17,10 +23,11 @@
     &-black {
         font-size: 2.1rem;
         font-weight: 400;
-        color: map-get($colors, 'darker' )
+        color: map-get($colors, 'darker' );
+
+
     }
 }
-
 h6.description {
     text-align: center;
 }
@@ -39,13 +46,33 @@ p.tip {
 
 .list-element::before {
     content: "• ";
-    color: red;
+    color: #4253b4;
     font-size: 1.5rem;
   }
 
-.card > img{
-    width: 20%;
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    @include flex-mixin(center,flex-start,row);
 }
+
+.card {
+    min-width: 14.4rem;
+    max-width: 33.333%;
+    @include flex-mixin(center,flex-start,column);
+    @include media-min(map-get($breakpoints, "phone")){
+        align-items: center;
+    }
+
+    &-title, &-description {
+        text-align: center;
+    }
+
+    & > img{
+        width: 20%;
+    }
+}
+
 
 .logos > img{
     margin: 1rem;
@@ -59,11 +86,6 @@ p.tip {
     & > div {
         margin: 2rem 0;
     }
-
-        .title{
-            margin: .5rem 0;
-
-        }
         .subtitle{
             font-size: 1.2rem;
             text-align: center;
@@ -86,6 +108,11 @@ p.tip {
             transition: all ease .3s;
             margin-bottom: 2rem;
             text-decoration: none;
+
+            &:hover{
+                background: map-get($colors, "primary" );
+                color: map-get($colors, "secondary" );
+            }
         }
 }
 
