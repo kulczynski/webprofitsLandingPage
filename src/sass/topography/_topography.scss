@@ -1,0 +1,57 @@
+@import '../utils/utils';
+
+
+body {
+    font-family: 'Roboto Slab', serif;
+
+
+    h1{
+        font-family: 'Lato', sans-serif;
+        @include topography-set(2.55rem, 400, 3rem, center);
+    }
+    h2{
+        @include topography-set(2.15rem, 200, 3rem, center);
+        padding: 2rem 0 1rem 0;
+    }
+    h3{
+        @include topography-set(1.5rem, 900, 2rem, left);}
+    h4{
+        @include topography-set(1.1rem, 300, 1.7rem, left);
+    }
+    h5{
+        @include topography-set(.8rem, 900, 1rem, left);
+        text-transform: uppercase;
+        color: map-get($colors, 'pink' );
+        margin: 1rem 0;
+    }
+    h6{
+        @include topography-set(1rem, 700, 1.7rem, left);
+    }
+    strong {
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+    
+    p, ul{
+        @include topography-set(1rem, 200, 1.7rem, left);
+    }
+
+    p {
+        padding: 1rem .35rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: map-get($colors, 'primary' );
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

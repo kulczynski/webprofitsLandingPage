@@ -9,18 +9,37 @@
     flex-direction: $direction;
 }
 
+@mixin topography-set($f-size, $f-weight, $l-height, $t-align){
+    font-size: $f-size;
+    font-weight:  $f-weight;
+    line-height: $l-height;
+    text-align: $t-align;
+}
+
+@mixin media-min($width){
+    @media (min-width: $width) {@content;}
+}
+
+@mixin media-max($width){
+    @media (max-width: $width)  {@content;}
+}
+
+@mixin media-between($widthOne, $widthTwo){
+    @media (min-width: $width) and (max-width: $widthTwo) {@content;}
+}
+
 .container {
-    max-width: 90%;
+    max-width: 95%;
     min-width: 230px;
 
 }
 
 
-    .flex-center-col {
+.flex-center-col {
     @include flex-mixin(center, center, column );
-    }
+}
 
-    .flex-center-row {
-        @include flex-mixin(space-between, center, row );
-    }
+.flex-center-row {
+    @include flex-mixin(center, center, row );
+}
 
