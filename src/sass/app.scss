@@ -9,7 +9,12 @@
     padding: 0;
 }
 
+main{
+    width: 100%;
+}
+
 .title{
+
     &-pink{
     color: map-get($colors, 'pink' );
     }
@@ -17,17 +22,18 @@
     &-black {
         font-size: 2.1rem;
         font-weight: 400;
-        color: map-get($colors, 'darker' )
+        color: map-get($colors, 'darker' );
+
+
     }
 }
-
 h6.description {
     text-align: center;
 }
 
 p.tip {
-    color: map-get($colors, 'grey' );
-    font-size: .8rem;
+    color: map-get($colors, 'darker' );
+    font-size: .9rem;
     text-align: center;
 }
 .list-element {
@@ -39,31 +45,66 @@ p.tip {
 
 .list-element::before {
     content: "• ";
-    color: red;
+    color: #4253b4;
     font-size: 1.5rem;
   }
 
-.card > img{
-    width: 20%;
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    @include flex-mixin(center,flex-start,row);
+}
+
+.card {
+    min-width: 14.4rem;
+    max-width: 33.333%;
+    @include flex-mixin(center,flex-start,column);
+    @include media-min(map-get($breakpoints, "phone")){
+        align-items: center;
+    }
+
+    &-title, &-description {
+        text-align: center;
+    }
+
+    &-title {
+        font-size: 1.3rem;
+        padding: .7rem 0;
+    }
+
+    & > img{
+        width: 20%;
+    }
+}
+
+.logos {
+    width: 50%;
+}
+.awards {
+    max-width: 90%;
+    flex-wrap: wrap;
+    .award{
+        width: 100px;
+        max-width: 30%;
+        min-width: 20%;
+        margin: 1rem;
+    }
 }
 
 .logos > img{
+    width: 30%;
     margin: 1rem;
 }
 
+
 .dark-bg {
-    // width:100vw;
+    width: 100%;
     background: map-get($colors, "darker" );
     color: map-get($colors, "primary" );
 
     & > div {
-        margin: 2rem 0;
+        margin: 1rem 0;
     }
-
-        .title{
-            margin: .5rem 0;
-
-        }
         .subtitle{
             font-size: 1.2rem;
             text-align: center;
@@ -86,11 +127,33 @@ p.tip {
             transition: all ease .3s;
             margin-bottom: 2rem;
             text-decoration: none;
+
+            &:hover{
+                background: map-get($colors, "primary" );
+                color: map-get($colors, "secondary" );
+            }
         }
 }
 
 .footer {
     padding: 1rem 0 0 0;
+
+    &-australia, &-asia, &-us {
+
+        &_title {
+            justify-content: flex-start;
+        }
+
+        &_cities {
+            justify-content: flex-start;
+        }
+    }
+
+    &-asia, &-us {
+        // width: 40%;
+        @include flex-mixin(center, left, column );
+        flex-wrap: wrap;
+    }
 
     &-description {
         min-width: 200px;

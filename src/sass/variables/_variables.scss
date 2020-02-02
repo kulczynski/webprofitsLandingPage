@@ -1,8 +1,14 @@
 $colors: (
     "darker": #292d39,
-    "grey": #6a6a6a,
+    "grey": #c9c9c9,
     "pink":#d33d5c,
+    "red":#e61740,
     "primary": rgb(255, 255, 255),
     "secondary": #21242e,
-
 );
+
+$breakpoints: (
+    "phone": 500px,
+    "tablet":770px,
+    "desktop": 1024px,
+)

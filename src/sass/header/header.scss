@@ -1,13 +1,21 @@
 @import '../variables/variables';
+@import '../utils/utils';
 
 
 .header {
     background: map-get($colors, "darker" );
     color: map-get($colors, "primary" );
     .nav {
+        width:100%;
         .navigation {
             flex-direction: column;
             list-style: none;
+            padding-top: 1rem;
+
+            @include media-min(map-get($breakpoints, "phone")){
+                @include flex-mixin(space-between, center, row );
+
+            }
             .logo{
                 font-family: 'Bangers', cursive;
                 font-size: 3rem;
@@ -15,6 +23,28 @@
             }
             .contact{
                 display: none;
+                margin: 1rem 0 0 0;
+
+                @include media-min(map-get($breakpoints, "phone")){
+                    display: flex;
+                    align-self: center;
+                    font-family: 'Lato', sans-serif;
+                    font-size: 1.75rem;
+                    font-weight: 400;
+
+                    .call {
+                        display: none;
+                    }
+                }
+
+                @include media-min(map-get($breakpoints, "tablet")){
+                    font-size: 1.5rem;
+
+                    .call {
+                        display: inline;
+                        margin-right: 1rem;
+                    }
+                }
             }
         }
     }
@@ -30,16 +60,25 @@
         }
         .newsletterForm{
             width: 100%;
+            @include media-min(map-get($breakpoints, "phone")){
+                // justify-content: space-around;
+
+                flex-direction: row;
+            }
 
             .email, .button {
                 width: 100%;
-                height: 3rem;
+                height: 3.5rem;
                 font-size: 1rem;
                 text-align: center;
                 margin-bottom: 1rem;
             }
 
             .email{
+                @include media-min(map-get($breakpoints, "phone")){
+                    width: 60%;
+                    margin-right: 1.5rem;
+                }
 
                 &::placeholder{
                     color: map-get($colors, "darker" )
@@ -54,11 +93,14 @@
                 letter-spacing: .25rem;
                 text-transform: uppercase;
 
+                @include media-min(map-get($breakpoints, "phone")){
+                    width: 30%;
+                }
             }
         }
         .hero-tips{
             color: map-get($colors, "grey" );
-            font-size: 1.1rem;
+            font-size: .9rem;
             text-align: center;
             line-height: 2rem;
             margin-bottom: 8rem;
