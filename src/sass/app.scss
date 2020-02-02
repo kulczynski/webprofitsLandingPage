@@ -14,7 +14,6 @@ main{
 }
 
 .title{
-    margin: .5rem 0;
 
     &-pink{
     color: map-get($colors, 'pink' );
@@ -33,8 +32,8 @@ h6.description {
 }
 
 p.tip {
-    color: map-get($colors, 'grey' );
-    font-size: .8rem;
+    color: map-get($colors, 'darker' );
+    font-size: .9rem;
     text-align: center;
 }
 .list-element {
@@ -68,6 +67,11 @@ p.tip {
         text-align: center;
     }
 
+    &-title {
+        font-size: 1.3rem;
+        padding: .7rem 0;
+    }
+
     & > img{
         width: 20%;
     }
@@ -75,16 +79,21 @@ p.tip {
 
 
 .logos > img{
+    width: 30%;
     margin: 1rem;
 }
 
+.award{
+    max-width: 20%;
+    // min-width: 10%;
+}
+
 .dark-bg {
-    // width:100vw;
     background: map-get($colors, "darker" );
     color: map-get($colors, "primary" );
 
     & > div {
-        margin: 2rem 0;
+        margin: 1rem 0;
     }
         .subtitle{
             font-size: 1.2rem;
@@ -118,6 +127,23 @@ p.tip {
 
 .footer {
     padding: 1rem 0 0 0;
+
+    &-australia, &-asia, &-us {
+
+        &_title {
+            justify-content: flex-start;
+        }
+
+        &_cities {
+            justify-content: flex-start;
+        }
+    }
+
+    &-asia, &-us {
+        // width: 40%;
+        @include flex-mixin(center, left, column );
+        flex-wrap: wrap;
+    }
 
     &-description {
         min-width: 200px;

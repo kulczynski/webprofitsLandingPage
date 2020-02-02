@@ -34,12 +34,25 @@
 
 }
 
+.txt-left{
+    text-align: left;
+}
 
 .flex-center-col {
     @include flex-mixin(center, center, column );
 }
 
+.flex-left-col {
+    @include flex-mixin(left, left, column );
+    flex-wrap: wrap;
+}
+.flex-left-row {
+    @include flex-mixin(left, left, row );
+    flex-wrap: wrap;
+}
+
 .flex-center-row {
     @include flex-mixin(center, center, row );
+    flex-wrap: wrap;
 }
 
