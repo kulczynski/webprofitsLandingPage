@@ -77,18 +77,28 @@ p.tip {
     }
 }
 
+.logos {
+    width: 50%;
+}
+.awards {
+    max-width: 90%;
+    flex-wrap: wrap;
+    .award{
+        width: 100px;
+        max-width: 30%;
+        min-width: 20%;
+        margin: 1rem;
+    }
+}
 
 .logos > img{
     width: 30%;
     margin: 1rem;
 }
 
-.award{
-    max-width: 20%;
-    // min-width: 10%;
-}
 
 .dark-bg {
+    width: 100%;
     background: map-get($colors, "darker" );
     color: map-get($colors, "primary" );
 

@@ -48,7 +48,7 @@ body {
 
     a {
         text-decoration: none;
-        color: map-get($colors, 'primary' );
+        color: map-get($colors, 'red' );
 
         &:hover {
             text-decoration: underline;

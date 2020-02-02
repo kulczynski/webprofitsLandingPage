@@ -31,7 +31,19 @@
                     font-family: 'Lato', sans-serif;
                     font-size: 1.75rem;
                     font-weight: 400;
-                    color: map-get($colors, "red" )
+
+                    .call {
+                        display: none;
+                    }
+                }
+
+                @include media-min(map-get($breakpoints, "tablet")){
+                    font-size: 1.5rem;
+
+                    .call {
+                        display: inline;
+                        margin-right: 1rem;
+                    }
                 }
             }
         }
