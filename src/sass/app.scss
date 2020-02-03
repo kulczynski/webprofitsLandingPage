@@ -17,6 +17,11 @@ main{
 
     &-pink{
     color: map-get($colors, 'pink' );
+
+    @include media-min(map-get($breakpoints, "tablet")){
+        font-size: 3rem;
+        padding: 3rem 0;
+        }
     }
 
     &-black {
@@ -27,6 +32,38 @@ main{
 
     }
 }
+
+.paragraphs-block{
+    width: 100%;
+    background: rgba(255, 255, 255, .7);
+    @include media-min(map-get($breakpoints, "phone")){
+        width: 60%;
+        min-width: 40%;
+        background: rgba(255, 255, 255, 1);
+        border: 2px solid lightblue;
+        padding: 0 1rem;
+    }
+    @include media-min(map-get($breakpoints, "tablet")){
+        width: 50%;
+        background: rgba(255, 255, 255, 1);
+        border: 2px solid lightblue;
+    }
+}
+
+.chart{
+    position: relative;
+    &-img{
+        position: absolute;
+        right: 0;
+        bottom:0;
+        @include media-min(map-get($breakpoints, "phone")){
+            right: 0;
+            bottom:-2rem;
+        }
+        z-index: -1;
+    }
+}
+
 h6.description {
     text-align: center;
 }
