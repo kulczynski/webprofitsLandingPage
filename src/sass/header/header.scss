@@ -50,6 +50,14 @@
     }
 
     .hero{
+        @include media-min(map-get($breakpoints, "desktop")){
+            & {
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            padding: 2rem ;
+        }
+    }
         .hero-title{
             margin: 1.5rem 0;
 
@@ -103,8 +111,21 @@
             font-size: .9rem;
             text-align: center;
             line-height: 2rem;
-            margin-bottom: 8rem;
         }
+        &-picture{
+            display: none;
+        }
+        @include media-min(map-get($breakpoints, "tablet")){
+        &-picture{
+            display: flex;
+            margin-top: -6rem;
+            margin-bottom: -5rem;
+
+            & > img {
+                max-width: 30rem;
+            }
+        }
+    }
     }
 }
 
